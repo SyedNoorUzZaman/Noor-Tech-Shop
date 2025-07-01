@@ -11,13 +11,15 @@ A web application for selling electronic products built with Flask, SQLite, and 
 - Shopping cart
 - Checkout process
 - Order history and tracking
+- **RESTful API** with Swagger UI documentation
 
 ## Technologies Used
 
 - Backend: Python Flask
 - Database: SQLite
 - Frontend: HTML, Tailwind CSS, JavaScript
-- Authentication: Flask-Login
+- Authentication: Flask-Login, JWT (for API)
+- API Documentation: Swagger UI / OpenAPI
 
 ## Installation
 
@@ -63,6 +65,21 @@ A web application for selling electronic products built with Flask, SQLite, and 
      ```
      Replace `<server-ip-address>` with your server's actual IP address (e.g., 192.168.1.100)
 
+## API Access
+
+The application includes a RESTful API with the following features:
+
+- Full CRUD operations for products, categories, orders, and cart
+- JWT authentication
+- Swagger UI for interactive documentation and testing
+
+Access the API documentation:
+```
+http://127.0.0.1:5000/api/docs
+```
+
+For detailed API information, see the [API_README.md](API_README.md) file.
+
 ## Accessing via Server IP Address
 
 The application is configured to listen on all network interfaces (0.0.0.0), which means you can access it from any device on the same network using the server's IP address.
@@ -86,6 +103,10 @@ The application uses SQLite with the following main tables:
 ## Default Accounts
 
 For testing, you can register a new account or use the application as a guest to browse products.
+
+For API testing, you can use:
+- Regular user: `user@example.com` / `password`
+- Admin user: `admin@example.com` / `admin` (via admin login page)
 
 ## License
 

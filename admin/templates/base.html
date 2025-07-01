@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Admin Panel - NoorTech Shop{% endblock %}</title>
+    <title>{% block title %}Admin Panel - ElectroShop{% endblock %}</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -38,7 +38,7 @@
         <aside id="sidebar" class="sidebar bg-gray-800 text-white flex flex-col fixed h-full z-10 transition-all duration-300">
             <div class="p-4 border-b border-gray-700">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold">NoorTech Shop Admin</h1>
+                    <h1 class="text-xl font-bold">ElectroShop Admin</h1>
                     <button id="closeSidebar" class="md:hidden text-gray-400 hover:text-white">
                         <i class="fas fa-times"></i>
                     </button>
@@ -84,6 +84,12 @@
                         </a>
                     </li>
                     {% endif %}
+                    <li>
+                        <a href="/admin/api/docs" class="flex items-center px-4 py-3 hover:bg-gray-700">
+                            <i class="fas fa-book-open w-6"></i>
+                            <span>API Documentation</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="p-4 border-t border-gray-700">

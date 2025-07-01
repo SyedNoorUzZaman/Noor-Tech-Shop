@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}NoorTech Shop{% endblock %}</title>
+    <title>{% block title %}ElectroShop{% endblock %}</title>
     <!-- Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -23,7 +23,7 @@
 <body class="min-h-screen bg-gray-50 flex flex-col">
     <header class="bg-blue-600 text-white shadow-lg">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold">NoorTech Shop</a>
+            <a href="/" class="text-2xl font-bold">ElectroShop</a>
             
             <div class="flex items-center">
                 <form action="{{ url_for('products') }}" method="get" class="hidden sm:flex mr-4">
@@ -92,7 +92,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">About NoorTech Shop</h3>
+                    <h3 class="text-lg font-semibold mb-2">About ElectroShop</h3>
                     <p class="text-gray-300">Your one-stop destination for all electronic products at competitive prices.</p>
                 </div>
                 <div>
@@ -112,7 +112,7 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Contact</h3>
                     <address class="text-gray-300 not-italic">
-                        <p>Email: contact@NoorTech Shop.com</p>
+                        <p>Email: contact@electroshop.com</p>
                         <p>Phone: +1 (555) 123-4567</p>
                         <div class="mt-2 space-x-2">
                             <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook"></i></a>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="mt-4 pt-4 border-t border-gray-700 text-center text-gray-400">
-                <p>&copy; {{ now.year if now else '2023' }} NoorTech Shop. All rights reserved.</p>
+                <p>&copy; {{ now.year if now else '2023' }} ElectroShop. All rights reserved.</p>
             </div>
         </div>
     </footer>

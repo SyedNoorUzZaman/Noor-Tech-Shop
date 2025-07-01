@@ -1,18 +1,28 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import JWTManager
 import sqlite3
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
+
+from api import api
+from swagger_ui import register_swagger_ui
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['DATABASE'] = os.path.join(app.root_path, 'database.db')
+# Setup JWT
+app.config['JWT_SECRET_KEY'] = 'jwt_secret_key'  # Change this in production
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+# Initialize JWT
+jwt = JWTManager(app)
 
 # Add Jinja filter for JSON handling
 @app.template_filter('tojson')
@@ -22,6 +32,12 @@ def to_json(value):
 @app.template_filter('fromjson')
 def from_json(value):
     return json.loads(value)
+
+# Register API blueprint
+app.register_blueprint(api)
+
+# Register Swagger UI blueprint
+app.register_blueprint(register_swagger_ui())
 
 class User(UserMixin):
     def __init__(self, id, username, email, password_hash, profile=None):

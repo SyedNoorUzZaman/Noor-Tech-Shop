@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
+from flask_jwt_extended import JWTManager
 import sqlite3
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import wraps
 import uuid
 import shutil
+
+from admin_api import admin_api
+from swagger_ui import register_admin_swagger_ui
 
 # Configure app
 app = Flask(__name__)
@@ -17,6 +21,19 @@ app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'static', 
 app.config['MAIN_UPLOAD_FOLDER'] = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'images')
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB max upload size
+
+# JWT Configuration for API
+app.config['JWT_SECRET_KEY'] = 'admin_jwt_secret_key'  # Change in production
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
+
+# Initialize JWT
+jwt = JWTManager(app)
+
+# Register admin API blueprint
+app.register_blueprint(admin_api)
+
+# Register Swagger UI blueprint
+app.register_blueprint(register_admin_swagger_ui())
 
 # Ensure upload folders exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
